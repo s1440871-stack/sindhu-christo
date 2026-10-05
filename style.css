@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #fff8fa;
+    color: #4b3037;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Opening */
+
+.opening {
+    min-height: 100vh;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(145deg, #fff0f4, #fbdce5);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.opening p,
+.couple > p,
+.gallery > p,
+.message-card > p,
+.date > p {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #a05d6c;
+}
+
+.heart {
+    font-size: 42px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.opening h1 {
+    font-size: 40px;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.opening h1 span {
+    font-size: 30px;
+}
+
+.opening h3 {
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: normal;
+    color: #76545c;
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 26px;
+
+    border: none;
+    border-radius: 40px;
+
+    background: #9d5263;
+    color: white;
+
+    font-size: 15px;
+
+    box-shadow: 0 10px 25px rgba(100, 40, 55, 0.2);
+
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* Hidden */
+
+.hidden {
+    display: none;
+}
+
+
+/* Couple */
+
+.couple {
+    padding: 80px 20px 65px;
+    background: white;
+}
+
+.couple h2 {
+    font-size: 35px;
+    font-weight: normal;
+    margin: 18px 0;
+}
+
+.couple h3 {
+    font-size: 17px;
+    font-weight: normal;
+    color: #a05d6c;
+}
+
+
+/* Gallery */
+
+.gallery {
+    padding: 70px 0;
+    background: #fff8fa;
+}
+
+.gallery h2 {
+    font-size: 28px;
+    font-weight: normal;
+    margin: 15px 20px 30px;
+}
+
+.photos {
+    display: flex;
+    gap: 18px;
+
+    overflow-x: auto;
+
+    padding: 10px 20px 25px;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+}
+
+.photos::-webkit-scrollbar {
+    display: none;
+}
+
+.photos img {
+    flex: 0 0 82%;
+
+    width: 82%;
+    height: 430px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+
+    scroll-snap-align: center;
+
+    box-shadow: 0 15px 35px rgba(80, 35, 50, 0.18);
+}
+
+.gallery small {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #a05d6c;
+}
+
+
+/* Message */
+
+.message {
+    padding: 70px 20px;
+    background: #f7e5ea;
+}
+
+.message-card {
+    max-width: 500px;
+    margin: auto;
+
+    padding: 45px 25px;
+
+    background: white;
+
+    border-radius: 30px;
+
+    box-shadow: 0 15px 40px rgba(80, 35, 50, 0.12);
+}
+
+.message-card .heart {
+    margin-bottom: 20px;
+}
+
+.message-card h2 {
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+.message-text {
+    white-space: pre-line;
+
+    font-size: 16px;
+    line-height: 1.9;
+
+    color: #70545b;
+}
+
+.message-card h4 {
+    margin-top: 30px;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: #9d5263;
+}
+
+
+/* Date */
+
+.date {
+    padding: 80px 20px;
+    background: white;
+}
+
+.date h2 {
+    font-size: 52px;
+    font-weight: normal;
+
+    letter-spacing: 6px;
+
+    margin: 20px 0;
+}
+
+.date h3 {
+    font-size: 16px;
+    font-weight: normal;
+
+    line-height: 1.7;
+
+    color: #76545c;
+}
+
+
+/* Final */
+
+.final {
+    min-height: 80vh;
+
+    padding: 80px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(145deg, #fbdce5, #fff1f4);
+}
+
+.big-heart {
+    font-size: 75px;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+.final h2 {
+    font-size: 32px;
+    font-weight: normal;
+
+    margin: 25px 0 10px;
+}
+
+.final p {
+    font-size: 18px;
+    color: #76545c;
+}
+
+
+/* Heart Animation */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .opening h1 {
+        font-size: 34px;
+    }
+
+    .couple h2 {
+        font-size: 30px;
+    }
+
+    .photos img {
+        height: 390px;
+    }
+
+    .message-card h2 {
+        font-size: 22px;
+    }
+
+    .date h2 {
+        font-size: 45px;
+    }
+
+    .final h2 {
+        font-size: 28px;
+    }
+}
