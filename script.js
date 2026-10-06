@@ -344,7 +344,9 @@ document
 
 let musicStarted = false;
 
-let audio = null;
+const audio = new Audio("music.mp3");
+audio.loop = true;
+audio.volume = 0.45;
 
 
 function toggleMusic() {
