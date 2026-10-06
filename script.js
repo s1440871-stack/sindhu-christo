@@ -3,7 +3,6 @@
 ========================= */
 
 function openSurprise() {
-
     const opening = document.getElementById("opening");
     const mainContent = document.getElementById("mainContent");
 
@@ -12,9 +11,7 @@ function openSurprise() {
     opening.style.transform = "scale(1.05)";
 
     setTimeout(function () {
-
         opening.style.display = "none";
-
         mainContent.classList.remove("hidden");
 
         window.scrollTo({
@@ -24,7 +21,6 @@ function openSurprise() {
 
         startFloatingHearts();
         startCounter();
-
     }, 1000);
 }
 
@@ -34,11 +30,9 @@ function openSurprise() {
 ========================= */
 
 function startFloatingHearts() {
-
     const container = document.getElementById("floatingHearts");
 
     setInterval(function () {
-
         const heart = document.createElement("div");
 
         heart.className = "floating-heart";
@@ -49,12 +43,10 @@ function startFloatingHearts() {
             hearts[Math.floor(Math.random() * hearts.length)];
 
         heart.style.left = Math.random() * 100 + "%";
-
         heart.style.fontSize =
             (12 + Math.random() * 18) + "px";
 
-        const duration =
-            6 + Math.random() * 6;
+        const duration = 6 + Math.random() * 6;
 
         heart.style.animationDuration =
             duration + "s";
@@ -70,7 +62,7 @@ function startFloatingHearts() {
 
 
 /* =========================
-   LIVE LOVE COUNTER
+   LIVE COUNTER
 ========================= */
 
 function startCounter() {
@@ -137,7 +129,7 @@ function startCounter() {
 
 
 /* =========================
-   PHOTO FULLSCREEN VIEWER
+   PHOTO VIEWER
 ========================= */
 
 const photos =
@@ -148,7 +140,6 @@ const viewer =
 
 const viewerImage =
     document.getElementById("viewerImage");
-
 
 photos.forEach(function (card) {
 
@@ -176,8 +167,6 @@ function closeViewer() {
 }
 
 
-/* Close viewer by clicking outside image */
-
 viewer.addEventListener("click", function (event) {
 
     if (event.target === viewer) {
@@ -186,8 +175,6 @@ viewer.addEventListener("click", function (event) {
 
 });
 
-
-/* Close viewer with ESC */
 
 document.addEventListener("keydown", function (event) {
 
@@ -199,7 +186,7 @@ document.addEventListener("keydown", function (event) {
 
 
 /* =========================
-   CELEBRATE
+   CELEBRATION
 ========================= */
 
 function celebrate() {
@@ -244,13 +231,9 @@ function celebrate() {
         container.appendChild(heart);
 
         setTimeout(function () {
-
             heart.remove();
-
         }, 4500);
-
     }
-
 
     const button =
         document.querySelector(".celebrate-button");
@@ -258,19 +241,65 @@ function celebrate() {
     button.innerHTML =
         "❤️ Love Forever ❤️";
 
-    button.style.transform =
-        "scale(1.08)";
-
     setTimeout(function () {
-
         button.innerHTML =
             "Celebrate Our Love ❤️";
-
-        button.style.transform =
-            "scale(1)";
-
     }, 4000);
 }
+
+
+/* =========================
+   MUSIC PLAYER
+========================= */
+
+let audio = new Audio("./music.mp3");
+
+audio.loop = true;
+
+audio.preload = "auto";
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+musicButton.addEventListener("click", function () {
+
+    if (audio.paused) {
+
+        audio.play()
+            .then(function () {
+
+                musicButton.innerHTML = "♫";
+
+                musicButton.style.transform =
+                    "scale(1.1)";
+
+            })
+            .catch(function (error) {
+
+                console.log(
+                    "Music could not be played:",
+                    error
+                );
+
+                alert(
+                    "Music could not be loaded. Please check that music.mp3 is in the main folder."
+                );
+
+            });
+
+    } else {
+
+        audio.pause();
+
+        musicButton.innerHTML = "♪";
+
+        musicButton.style.transform =
+            "scale(1)";
+
+    }
+
+});
 
 
 /* =========================
@@ -281,7 +310,6 @@ const revealElements =
     document.querySelectorAll(
         ".section-heading, .timeline-item, .letter, .promise-content, .final-content"
     );
-
 
 const revealObserver =
     new IntersectionObserver(
@@ -339,62 +367,6 @@ document
 
 
 /* =========================
-   MUSIC
-========================= */
-
-let musicStarted = false;
-
-let audio = null;
-
-
-function toggleMusic() {
-
-    const button =
-        document.getElementById("musicButton");
-
-
-    if (!audio) {
-
-        audio = new Audio("./music.mp3");
-        audio.loop = true;
-
-    }
-
-
-    if (audio.paused) {
-
-        audio.play()
-            .then(function () {
-
-                musicStarted = true;
-
-                button.innerHTML = "♫";
-
-                button.style.transform =
-                    "rotate(360deg)";
-
-            })
-            .catch(function () {
-
-                alert(
-                    "Please add a music.mp3 file inside your GitHub repository."
-                );
-
-            });
-
-    } else {
-
-        audio.pause();
-
-        button.innerHTML = "♪";
-
-        button.style.transform =
-            "rotate(0deg)";
-    }
-}
-
-
-/* =========================
    DOUBLE TAP HEART
 ========================= */
 
@@ -416,9 +388,7 @@ document.addEventListener(
         ) {
 
             const target =
-                event.target.closest(
-                    ".photo-card"
-                );
+                event.target.closest(".photo-card");
 
             if (target) {
 
@@ -430,7 +400,6 @@ document.addEventListener(
         }
 
         lastTap = now;
-
     }
 );
 
@@ -443,15 +412,10 @@ function createTapHeart(x, y) {
     heart.innerHTML = "❤️";
 
     heart.style.position = "fixed";
-
     heart.style.left = x + "px";
-
     heart.style.top = y + "px";
-
     heart.style.zIndex = "30000";
-
     heart.style.pointerEvents = "none";
-
     heart.style.fontSize = "55px";
 
     heart.style.transform =
@@ -472,9 +436,7 @@ function createTapHeart(x, y) {
     });
 
     setTimeout(function () {
-
         heart.remove();
-
     }, 900);
 }
 
