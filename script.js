@@ -24,6 +24,19 @@ function openSurprise() {
 
         startFloatingHearts();
         startCounter();
+       audio.play()
+    .then(function () {
+
+        musicStarted = true;
+
+        document.getElementById("musicButton").innerHTML = "♫";
+
+    })
+    .catch(function () {
+
+        console.log("Music waiting for user interaction.");
+
+    });
 
     }, 1000);
 }
@@ -351,18 +364,33 @@ audio.volume = 0.45;
 
 function toggleMusic() {
 
-    const button =
-        document.getElementById("musicButton");
+    const button = document.getElementById("musicButton");
 
+    if (audio.paused) {
 
-    if (!audio) {
+        audio.play()
+            .then(function () {
 
-        audio =
-            new Audio("music.mp3");
+                musicStarted = true;
 
-        audio.loop = true;
+                button.innerHTML = "♫";
+                button.style.transform = "rotate(360deg)";
 
+            })
+            .catch(function (error) {
+
+                console.log("Music could not start:", error);
+
+            });
+
+    } else {
+
+        audio.pause();
+
+        button.innerHTML = "♪";
+        button.style.transform = "rotate(0deg)";
     }
+}
 
 
     if (audio.paused) {
