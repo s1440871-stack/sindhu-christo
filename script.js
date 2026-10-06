@@ -355,9 +355,7 @@ function toggleMusic() {
 
     if (!audio) {
 
-        audio =
-            new Audio("music.mp3");
-
+        audio = new Audio("./music.mp3");
         audio.loop = true;
 
     }
