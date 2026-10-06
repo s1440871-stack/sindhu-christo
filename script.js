@@ -35,33 +35,20 @@ function openSurprise() {
 
 function startFloatingHearts() {
 
-    const container =
-        document.getElementById("floatingHearts");
+    const container = document.getElementById("floatingHearts");
 
     setInterval(function () {
 
-        const heart =
-            document.createElement("div");
+        const heart = document.createElement("div");
 
-        heart.className =
-            "floating-heart";
+        heart.className = "floating-heart";
 
-        const hearts = [
-            "❤️",
-            "♡",
-            "💕",
-            "💗"
-        ];
+        const hearts = ["❤️", "♡", "💕", "💗"];
 
         heart.innerHTML =
-            hearts[
-                Math.floor(
-                    Math.random() * hearts.length
-                )
-            ];
+            hearts[Math.floor(Math.random() * hearts.length)];
 
-        heart.style.left =
-            Math.random() * 100 + "%";
+        heart.style.left = Math.random() * 100 + "%";
 
         heart.style.fontSize =
             (12 + Math.random() * 18) + "px";
@@ -75,9 +62,7 @@ function startFloatingHearts() {
         container.appendChild(heart);
 
         setTimeout(function () {
-
             heart.remove();
-
         }, duration * 1000);
 
     }, 900);
@@ -95,26 +80,20 @@ function startCounter() {
 
     function updateCounter() {
 
-        const now =
-            new Date();
+        const now = new Date();
 
         let difference =
-            now.getTime() -
-            startDate.getTime();
+            now.getTime() - startDate.getTime();
 
         if (difference < 0) {
             difference = 0;
         }
 
         const totalSeconds =
-            Math.floor(
-                difference / 1000
-            );
+            Math.floor(difference / 1000);
 
         const days =
-            Math.floor(
-                totalSeconds / 86400
-            );
+            Math.floor(totalSeconds / 86400);
 
         const hours =
             Math.floor(
@@ -135,7 +114,6 @@ function startCounter() {
         const remainingDays =
             days % 30;
 
-
         document.getElementById("months").innerText =
             months;
 
@@ -154,10 +132,7 @@ function startCounter() {
 
     updateCounter();
 
-    setInterval(
-        updateCounter,
-        1000
-    );
+    setInterval(updateCounter, 1000);
 }
 
 
@@ -177,73 +152,50 @@ const viewerImage =
 
 photos.forEach(function (card) {
 
-    card.addEventListener(
-        "click",
-        function () {
+    card.addEventListener("click", function () {
 
-            const image =
-                card.querySelector("img");
+        const image =
+            card.querySelector("img");
 
-            viewerImage.src =
-                image.src;
+        viewerImage.src =
+            image.src;
 
-            viewer.classList.add(
-                "active"
-            );
+        viewer.classList.add("active");
 
-            document.body.style.overflow =
-                "hidden";
-        }
-    );
+        document.body.style.overflow = "hidden";
+    });
 
 });
 
 
 function closeViewer() {
 
-    viewer.classList.remove(
-        "active"
-    );
+    viewer.classList.remove("active");
 
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
 }
 
 
 /* Close viewer by clicking outside image */
 
-viewer.addEventListener(
-    "click",
-    function (event) {
+viewer.addEventListener("click", function (event) {
 
-        if (
-            event.target === viewer
-        ) {
-
-            closeViewer();
-
-        }
-
+    if (event.target === viewer) {
+        closeViewer();
     }
-);
+
+});
 
 
 /* Close viewer with ESC */
 
-document.addEventListener(
-    "keydown",
-    function (event) {
+document.addEventListener("keydown", function (event) {
 
-        if (
-            event.key === "Escape"
-        ) {
-
-            closeViewer();
-
-        }
-
+    if (event.key === "Escape") {
+        closeViewer();
     }
-);
+
+});
 
 
 /* =========================
@@ -253,9 +205,7 @@ document.addEventListener(
 function celebrate() {
 
     const container =
-        document.getElementById(
-            "celebration"
-        );
+        document.getElementById("celebration");
 
     const hearts = [
         "❤️",
@@ -267,11 +217,7 @@ function celebrate() {
         "🌸"
     ];
 
-    for (
-        let i = 0;
-        i < 45;
-        i++
-    ) {
+    for (let i = 0; i < 45; i++) {
 
         const heart =
             document.createElement("div");
@@ -282,8 +228,7 @@ function celebrate() {
         heart.innerHTML =
             hearts[
                 Math.floor(
-                    Math.random() *
-                    hearts.length
+                    Math.random() * hearts.length
                 )
             ];
 
@@ -296,25 +241,19 @@ function celebrate() {
         heart.style.animationDuration =
             (2 + Math.random() * 2) + "s";
 
-        container.appendChild(
-            heart
-        );
+        container.appendChild(heart);
 
-        setTimeout(
-            function () {
+        setTimeout(function () {
 
-                heart.remove();
+            heart.remove();
 
-            },
-            4500
-        );
+        }, 4500);
+
     }
 
 
     const button =
-        document.querySelector(
-            ".celebrate-button"
-        );
+        document.querySelector(".celebrate-button");
 
     button.innerHTML =
         "❤️ Love Forever ❤️";
@@ -322,19 +261,15 @@ function celebrate() {
     button.style.transform =
         "scale(1.08)";
 
+    setTimeout(function () {
 
-    setTimeout(
-        function () {
+        button.innerHTML =
+            "Celebrate Our Love ❤️";
 
-            button.innerHTML =
-                "Celebrate Our Love ❤️";
+        button.style.transform =
+            "scale(1)";
 
-            button.style.transform =
-                "scale(1)";
-
-        },
-        4000
-    );
+    }, 4000);
 }
 
 
@@ -344,11 +279,7 @@ function celebrate() {
 
 const revealElements =
     document.querySelectorAll(
-        ".section-heading, " +
-        ".timeline-item, " +
-        ".letter, " +
-        ".promise-content, " +
-        ".final-content"
+        ".section-heading, .timeline-item, .letter, .promise-content, .final-content"
     );
 
 
@@ -356,26 +287,21 @@ const revealObserver =
     new IntersectionObserver(
         function (entries) {
 
-            entries.forEach(
-                function (entry) {
+            entries.forEach(function (entry) {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                if (entry.isIntersecting) {
 
-                        entry.target.style.opacity =
-                            "1";
+                    entry.target.style.opacity = "1";
 
-                        entry.target.style.transform =
-                            "translateY(0)";
+                    entry.target.style.transform =
+                        "translateY(0)";
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-                    }
-
+                    revealObserver.unobserve(
+                        entry.target
+                    );
                 }
-            );
+
+            });
 
         },
         {
@@ -384,25 +310,19 @@ const revealObserver =
     );
 
 
-revealElements.forEach(
-    function (element) {
+revealElements.forEach(function (element) {
 
-        element.style.opacity =
-            "0";
+    element.style.opacity = "0";
 
-        element.style.transform =
-            "translateY(35px)";
+    element.style.transform =
+        "translateY(35px)";
 
-        element.style.transition =
-            "opacity 1s ease, " +
-            "transform 1s ease";
+    element.style.transition =
+        "opacity 1s ease, transform 1s ease";
 
-        revealObserver.observe(
-            element
-        );
+    revealObserver.observe(element);
 
-    }
-);
+});
 
 
 /* =========================
@@ -410,17 +330,12 @@ revealElements.forEach(
 ========================= */
 
 document
-    .querySelectorAll(
-        ".photo-card img"
-    )
-    .forEach(
-        function (image) {
+    .querySelectorAll(".photo-card img")
+    .forEach(function (image) {
 
-            image.loading =
-                "lazy";
+        image.loading = "lazy";
 
-        }
-    );
+    });
 
 
 /* =========================
@@ -435,17 +350,13 @@ let audio = null;
 function toggleMusic() {
 
     const button =
-        document.getElementById(
-            "musicButton"
-        );
+        document.getElementById("musicButton");
 
 
     if (!audio) {
 
         audio =
-            new Audio(
-                "music.mp3"
-            );
+            new Audio("music.mp3");
 
         audio.loop = true;
 
@@ -455,36 +366,29 @@ function toggleMusic() {
     if (audio.paused) {
 
         audio.play()
-            .then(
-                function () {
+            .then(function () {
 
-                    musicStarted =
-                        true;
+                musicStarted = true;
 
-                    button.innerHTML =
-                        "♫";
+                button.innerHTML = "♫";
 
-                    button.style.transform =
-                        "rotate(360deg)";
+                button.style.transform =
+                    "rotate(360deg)";
 
-                }
-            )
-            .catch(
-                function () {
+            })
+            .catch(function () {
 
-                    alert(
-                        "Please add a music.mp3 file inside your GitHub repository."
-                    );
+                alert(
+                    "Please add a music.mp3 file inside your GitHub repository."
+                );
 
-                }
-            );
+            });
 
     } else {
 
         audio.pause();
 
-        button.innerHTML =
-            "♪";
+        button.innerHTML = "♪";
 
         button.style.transform =
             "rotate(0deg)";
@@ -498,7 +402,6 @@ function toggleMusic() {
 
 let lastTap = 0;
 
-
 document.addEventListener(
     "touchend",
     function (event) {
@@ -508,7 +411,6 @@ document.addEventListener(
 
         const timeSinceLastTap =
             now - lastTap;
-
 
         if (
             timeSinceLastTap < 350 &&
@@ -520,18 +422,14 @@ document.addEventListener(
                     ".photo-card"
                 );
 
-
             if (target) {
 
                 createTapHeart(
                     event.changedTouches[0].clientX,
                     event.changedTouches[0].clientY
                 );
-
             }
-
         }
-
 
         lastTap = now;
 
@@ -539,36 +437,24 @@ document.addEventListener(
 );
 
 
-function createTapHeart(
-    x,
-    y
-) {
+function createTapHeart(x, y) {
 
     const heart =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
-    heart.innerHTML =
-        "❤️";
+    heart.innerHTML = "❤️";
 
-    heart.style.position =
-        "fixed";
+    heart.style.position = "fixed";
 
-    heart.style.left =
-        x + "px";
+    heart.style.left = x + "px";
 
-    heart.style.top =
-        y + "px";
+    heart.style.top = y + "px";
 
-    heart.style.zIndex =
-        "30000";
+    heart.style.zIndex = "30000";
 
-    heart.style.pointerEvents =
-        "none";
+    heart.style.pointerEvents = "none";
 
-    heart.style.fontSize =
-        "55px";
+    heart.style.fontSize = "55px";
 
     heart.style.transform =
         "translate(-50%, -50%) scale(.5)";
@@ -576,32 +462,22 @@ function createTapHeart(
     heart.style.transition =
         "all .8s ease";
 
-    document.body.appendChild(
-        heart
-    );
+    document.body.appendChild(heart);
 
+    requestAnimationFrame(function () {
 
-    requestAnimationFrame(
-        function () {
+        heart.style.transform =
+            "translate(-50%, -100px) scale(1.4)";
 
-            heart.style.transform =
-                "translate(-50%, -100px) scale(1.4)";
+        heart.style.opacity = "0";
 
-            heart.style.opacity =
-                "0";
+    });
 
-        }
-    );
+    setTimeout(function () {
 
+        heart.remove();
 
-    setTimeout(
-        function () {
-
-            heart.remove();
-
-        },
-        900
-    );
+    }, 900);
 }
 
 
@@ -611,17 +487,15 @@ function createTapHeart(
 
 document
     .querySelectorAll("img")
-    .forEach(
-        function (image) {
+    .forEach(function (image) {
 
-            image.addEventListener(
-                "dragstart",
-                function (event) {
+        image.addEventListener(
+            "dragstart",
+            function (event) {
 
-                    event.preventDefault();
+                event.preventDefault();
 
-                }
-            );
+            }
+        );
 
-        }
-    );
+    });
